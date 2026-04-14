@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="sv">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Eirá Collection</title>
+
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <!-- CART -->
+        <div class="cart-overlay"></div>
+
+        <!-- CART DRAWER -->
+        <aside class="cart-drawer" aria-label="Varukorg">
+            <div class="cart-drawer__header">
+                <h2 class="cart-drawer__title">Varukorg</h2>
+                <button class="cart-drawer__close" aria-label="Stäng varukorg">
+                    &#x2715;
+                </button>
+            </div>
+            <div class="cart-drawer__items" id="cart-items"></div>
+            <div class="cart-drawer__footer">
+                <div class="cart-drawer__total">
+                    <span>Totalt</span>
+                    <span id="cart-total">0.00 SEK</span>
+                </div>
+                <button class="cart-drawer__checkout">Till kassan</button>
+            </div>
+        </aside>
+
+        <!-- NAVBAR -->
+        <header class="navbar">
+            <div class="nav-inner">
+                <!-- VÄNSTER: HAMBURGER -->
+                <button
+                    class="nav-toggle"
+                    aria-label="Öppna meny"
+                    aria-expanded="false"
+                >
+                    <div class="nav-toggle-box">
+                        <span class="nav-toggle-line"></span>
+                        <span class="nav-toggle-line"></span>
+                        <span class="nav-toggle-line"></span>
+                    </div>
+                </button>
+
+                <!-- MITTEN: LOGO -->
+                <a href="#" class="nav-logo">Eirá Collection</a>
+
+                <!-- HÖGER: VARUKORG -->
+                <button class="cart-btn" aria-label="Varukorg">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        stroke="#41271c"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="9" cy="20" r="1.5"></circle>
+                        <circle cx="18" cy="20" r="1.5"></circle>
+                        <path
+                            d="M2 3h2l2.2 10.5a2 2 0 0 0 2 1.5h7.8a2 2 0 0 0 2-1.6L22 7H6"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- MOBILMENY -->
+            <nav class="nav-links">
+                <a href="#nyheter">Mest köpta</a>
+                <a href="#halsband">Halsband</a>
+                <a href="#orhangen">Örhängen</a>
+                <a href="#ringar">Ringar</a>
+                <a href="#armband">Armband</a>
+                <a href="#about">Om oss</a>
+            </nav>
+        </header>
+
+        <!-- INNEHÅLL -->
+        <main class="page-content">
+            <!-- HERO -->
+            <section class="hero">
+                <div class="hero-image-wrapper">
+                    <img
+                        class="hero-image"
+                        src="./photos/hero.png"
+                        alt="Smycken från Eirá Collection"
+                    />
+                    <div class="hero-shimmer"></div>
+                    <div class="hero-gradient"></div>
+                </div>
+
+                <div class="hero-content">
+                    <h1>NEW IN</h1>
+                    <h2 class="wavy-text">Wavy Collection</h2>
+                    <a href="#nyheter" class="hero-cta">shop now</a>
+                </div>
+            </section>
+
+            <!-- NEDÅTPIL SOM HINT -->
+            <button
+                class="scroll-hint"
+                type="button"
+                aria-label="Scrolla nedåt till Mest köpta"
+            >
+                <span class="scroll-hint__label">Scrolla ned</span>
+                <span class="scroll-hint__icon">⌄</span>
+            </button>
+
+            <!-- KATEGORI-KNAPPAR -->
+            <section class="category-buttons">
+                <button class="category-button">Örhängen</button>
+                <button class="category-button">Halsband</button>
+                <button class="category-button">Ringar</button>
+                <button class="category-button">Armband</button>
+            </section>
+
+            <!-- MEST KÖPTA / PRODUKTER -->
+            <section class="products reveal-on-scroll" id="nyheter">
+                <div class="products-header">
+                    <p class="products-eyebrow">Sparkle Spring</p>
+                    <h2 class="products-title">Mest köpta</h2>
+                </div>
+
+                <div class="products-viewport">
+                    <button
+                        class="products-arrow products-arrow--prev"
+                        aria-label="Föregående"
+                    >
+                        ‹
+                    </button>
+
+                    <div class="products-track">
+                        <!-- PRODUKT 1 -->
+                        <article class="product-card" data-product-id="1">
+                            <div class="product-media">
+                                <img
+                                    src="./photos/1.png"
+                                    alt="Örhänge i guld"
+                                />
+                            </div>
+                            <div class="product-content">
+                                <p class="product-brand">Eirá</p>
+                                <h3 class="product-name">Luna Hoops Gold</h3>
+                                <p class="product-price">399.00 SEK</p>
+                                <p class="product-subtitle">
+                                    18K guldpläterat sterling silver
+                                </p>
+                                <div class="product-swatches">
+                                    <span
+                                        class="product-swatch product-swatch--gold"
+                                    ></span>
+                                    <span
+                                        class="product-swatch product-swatch--silver"
+                                    ></span>
+                                </div>
+                                <button class="product-add-btn">
+                                    Lägg i varukorg
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- PRODUKT 2 -->
+                        <article class="product-card" data-product-id="2">
+                            <div class="product-media">
+                                <img
+                                    src="./photos/2.png"
+                                    alt="Örhänge i silver"
+                                />
+                            </div>
+                            <div class="product-content">
+                                <p class="product-brand">Eirá</p>
+                                <h3 class="product-name">Luna Hoops Silver</h3>
+                                <p class="product-price">299.00 SEK</p>
+                                <p class="product-subtitle">Sterling silver</p>
+                                <div class="product-swatches">
+                                    <span
+                                        class="product-swatch product-swatch--silver"
+                                    ></span>
+                                </div>
+                                <button class="product-add-btn">
+                                    Lägg i varukorg
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- PRODUKT 3 -->
+                        <article class="product-card" data-product-id="3">
+                            <div class="product-media">
+                                <img
+                                    src="./photos/3.png"
+                                    alt="Örhänge i guld"
+                                />
+                            </div>
+                            <div class="product-content">
+                                <p class="product-brand">Eirá</p>
+                                <h3 class="product-name">
+                                    Elara Drop Earrings
+                                </h3>
+                                <p class="product-price">599.00 SEK</p>
+                                <p class="product-subtitle">
+                                    18K guldpläterat sterling silver
+                                </p>
+                                <div class="product-swatches">
+                                    <span
+                                        class="product-swatch product-swatch--gold"
+                                    ></span>
+                                </div>
+                                <button class="product-add-btn">
+                                    Lägg i varukorg
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- PRODUKT 4 -->
+                        <article class="product-card" data-product-id="4">
+                            <div class="product-media">
+                                <img
+                                    src="./photos/4.png"
+                                    alt="Halsband i guld"
+                                />
+                            </div>
+                            <div class="product-content">
+                                <p class="product-brand">Eirá</p>
+                                <h3 class="product-name">
+                                    Stella Halo Necklace
+                                </h3>
+                                <p class="product-price">799.00 SEK</p>
+                                <p class="product-subtitle">
+                                    18K guldpläterat sterling silver
+                                </p>
+                                <div class="product-swatches">
+                                    <span
+                                        class="product-swatch product-swatch--gold"
+                                    ></span>
+                                </div>
+                                <button class="product-add-btn">
+                                    Lägg i varukorg
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- PRODUKT 5 -->
+                        <article class="product-card" data-product-id="5">
+                            <div class="product-media">
+                                <img
+                                    src="./photos/5.png"
+                                    alt="Halsband i silver"
+                                />
+                            </div>
+                            <div class="product-content">
+                                <p class="product-brand">Eirá</p>
+                                <h3 class="product-name">
+                                    Nord Chain Necklace
+                                </h3>
+                                <p class="product-price">899.00 SEK</p>
+                                <p class="product-subtitle">Sterling silver</p>
+                                <div class="product-swatches">
+                                    <span
+                                        class="product-swatch product-swatch--silver"
+                                    ></span>
+                                </div>
+                                <button class="product-add-btn">
+                                    Lägg i varukorg
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <button
+                        class="products-arrow products-arrow--next"
+                        aria-label="Nästa"
+                    >
+                        ›
+                    </button>
+                </div>
+            </section>
+
+            <!-- PREVIEW-DEL -->
+            <section class="preview">
+                <p class="scroll-banner scroll-banner--bottom">
+                    <span>
+                        Effortless elegance. Timeless details. Designed to shine
+                        with you. Discover the beauty in every moment. —
+                    </span>
+                    <span>
+                        Effortless elegance. Timeless details. Designed to shine
+                        with you. Discover the beauty in every moment. —
+                    </span>
+                </p>
+
+                <h1 class="preview-title">THE LOOK</h1>
+
+                <img
+                    class="preview-image"
+                    src="./photos/preview2.png"
+                    alt="Smyckesstyling från Eirá Collection"
+                />
+
+                <p class="scroll-banner scroll-banner--top">
+                    <span>
+                        Effortless elegance. Timeless details. Designed to shine
+                        with you. Discover the beauty in every moment. —
+                    </span>
+                    <span>
+                        Effortless elegance. Timeless details. Designed to shine
+                        with you. Discover the beauty in every moment. —
+                    </span>
+                </p>
+            </section>
+
+            <!-- MEDLEMSKAP / NEWSLETTER -->
+            <section class="newsletter" id="newsletter">
+                <div class="newsletter-inner">
+                    <p class="newsletter-eyebrow">Eirá Inner Circle</p>
+                    <h2 class="newsletter-title">
+                        Smycken först. Hemligheter först. Du först.
+                    </h2>
+
+                    <p class="newsletter-copy">
+                        Få exklusiv tillgång till nya kollektioner, limited
+                        drops och privata erbjudanden innan alla andra. Vi lovar
+                        – inga spamfloder, bara skimrande nyheter.
+                    </p>
+
+                    <form class="newsletter-form">
+                        <input
+                            class="newsletter-input"
+                            type="email"
+                            placeholder="DIN EMAILADRESS*"
+                            required
+                            autocomplete="email"
+                        />
+
+                        <input
+                            class="newsletter-input"
+                            type="text"
+                            placeholder="FÖDELSEDAG YYYY/MM/DD"
+                        />
+
+                        <label class="newsletter-privacy">
+                            <input type="checkbox" required />
+                            <span>
+                                Jag accepterar
+                                <a href="#">integritetspolicyn</a>
+                            </span>
+                        </label>
+
+                        <button type="submit" class="newsletter-button">
+                            BLI MEDLEM NU
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER MED "MÅNE" -->
+        <footer class="site-footer reveal-arc">
+            <div class="footer-content">
+                <div class="footer-top">
+                    <a href="#" class="footer-logo">Eirá Collection</a>
+                    <p class="footer-rights">
+                        © <span id="year"></span> All rights reserved
+                    </p>
+                </div>
+
+                <div class="footer-divider"></div>
+
+                <div class="footer-links-row">
+                    <div class="footer-col">
+                        <h4>Kontakt</h4>
+                        <a href="mailto:hello@eira-collection.com">
+                            hello@eira-collection.com
+                        </a>
+                    </div>
+
+                    <div class="footer-col footer-col-right">
+                        <h4>Info</h4>
+                        <a href="#newsletter">Nyhetsbrev</a>
+                        <a href="#">Villkor</a>
+                    </div>
+                </div>
+
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <rect
+                                x="3"
+                                y="3"
+                                width="18"
+                                height="18"
+                                rx="5"
+                            ></rect>
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <circle cx="17" cy="7" r="1.2"></circle>
+                        </svg>
+                    </a>
+
+                    <a href="#" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M15 5.5c.6.8 1.4 1.4 2.4 1.7l.6.2v2.3a5 5 0 0 1-3-1v4.3a4.5 4.5 0 1 1-4.5-4.5c.3 0 .6 0 .9.1v2.2A2.2 2.2 0 1 0 12.9 15V5.5h2.1z"
+                            ></path>
+                        </svg>
+                    </a>
+
+                    <a href="#" aria-label="Pinterest">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 3a7 7 0 0 0-2.6 13.5c-.1-.7-.2-1.8 0-2.6l1-4.3s-.2-.5-.2-1.2c0-1.1.7-1.9 1.6-1.9.8 0 1.2.6 1.2 1.3 0 .8-.5 2-0.7 3-.2.9.4 1.7 1.3 1.7 1.6 0 2.9-1.7 2.9-4.1 0-2.1-1.5-3.6-3.7-3.6a4 4 0 0 0-4.2 4.1c0 .8.3 1.6.7 2l-.3 1.2c-.1.4-.4.5-.8.3-1.1-.5-1.8-2-1.8-3.3C7.4 7.2 9.6 5 12.9 5s5.7 2.4 5.7 5.6c0 3.2-2 5.8-5 5.8-1 0-1.9-.5-2.2-1l-.6 2.1c-.2.8-.7 1.7-1 2.3A9 9 0 0 0 12 3z"
+                            ></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <script src="script.js"></script>
+        </footer>
+    </body>
+</html>
