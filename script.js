@@ -1,3 +1,19 @@
+// === SITE LOADER ===
+const siteLoader = document.getElementById('site-loader')
+if (siteLoader) {
+    const minWait = new Promise((r) => setTimeout(r, 2300))
+    const loaded = new Promise((r) => {
+        if (document.readyState === 'complete') r()
+        else window.addEventListener('load', r, { once: true })
+    })
+    Promise.all([minWait, loaded]).then(() => {
+        siteLoader.classList.add('hide')
+        siteLoader.addEventListener('transitionend', () => siteLoader.remove(), {
+            once: true,
+        })
+    })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // === NAV TOGGLE (hamburgermenyn) ===
     const toggleBtn = document.querySelector('.nav-toggle')
