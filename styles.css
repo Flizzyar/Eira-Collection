@@ -1310,7 +1310,7 @@ img {
     .preview {
         flex-direction: row;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         padding: 4rem 5rem;
         gap: 3rem;
     }
@@ -1324,7 +1324,7 @@ img {
     }
 
     .preview-image {
-        width: 45%;
+        width: 25%;
         max-width: 650px;
         margin: 0;
     }
