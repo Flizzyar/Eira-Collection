@@ -8,9 +8,13 @@ if (siteLoader) {
     })
     Promise.all([minWait, loaded]).then(() => {
         siteLoader.classList.add('hide')
-        siteLoader.addEventListener('transitionend', () => siteLoader.remove(), {
-            once: true,
-        })
+        siteLoader.addEventListener(
+            'transitionend',
+            () => siteLoader.remove(),
+            {
+                once: true
+            }
+        )
     })
 }
 
@@ -53,6 +57,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         animate()
+    }
+
+    // === NEDÅTPIL (SCROLL-HINT) ===
+    const scrollHint = document.querySelector('.scroll-hint')
+    if (scrollHint) {
+        const targetSection = document.getElementById('nyheter')
+
+        window.addEventListener(
+            'scroll',
+            () => {
+                if (window.scrollY > 40) {
+                    scrollHint.classList.add('scroll-hint--hidden')
+                }
+            },
+            { passive: true }
+        )
+
+        scrollHint.addEventListener('click', () => {
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' })
+            }
+        })
+    }
+
+    // === KATEGORI-KNAPPAR REVEAL ===
+    const categoryButtons = document.querySelector('.category-buttons')
+    if (categoryButtons) {
+        window.addEventListener(
+            'scroll',
+            () => {
+                categoryButtons.classList.add('category-buttons--visible')
+            },
+            { passive: true, once: true }
+        )
     }
 
     // === PRODUKT-SLIDER (MEST KÖPTA) ===
@@ -102,32 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlider()
     }
 
-    // === NEDÅTPIL (SCROLL-HINT) ===
-    const scrollHint = document.querySelector('.scroll-hint')
-    if (scrollHint) {
-        const targetSection = document.getElementById('nyheter')
-
-        const hideHint = () => {
-            scrollHint.classList.add('scroll-hint--hidden')
-            window.removeEventListener('scroll', onScroll)
-        }
-
-        const onScroll = () => {
-            if (window.scrollY > 10) {
-                hideHint()
-            }
-        }
-
-        window.addEventListener('scroll', onScroll)
-
-        scrollHint.addEventListener('click', () => {
-            if (targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth' })
-            }
-            hideHint()
-        })
-    }
-
     // === REVEAL PÅ SCROLL (t.ex. "Mest köpta") ===
     const revealSections = document.querySelectorAll('.reveal-on-scroll')
 
@@ -153,29 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
         )
     }
 
-    // === FOOTER-BÅGE + TEXT REVEAL ===
-    const footerArc = document.querySelector('.site-footer.reveal-arc')
-
-    if ('IntersectionObserver' in window && footerArc) {
-        const footerObserver = new IntersectionObserver(
-            (entries, obs) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        footerArc.classList.add('reveal-arc--visible')
-                        obs.unobserve(footerArc)
-                    }
-                })
-            },
-            {
-                threshold: 0.2
-            }
-        )
-
-        footerObserver.observe(footerArc)
-    } else if (footerArc) {
-        footerArc.classList.add('reveal-arc--visible')
-    }
-
     // === NEWSLETTER FORM ===
     const newsletterForm = document.querySelector('.newsletter-form')
     if (newsletterForm) {
@@ -186,12 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
             )
             newsletterForm.reset()
         })
-    }
-
-    // === FOOTER YEAR ===
-    const yearSpan = document.getElementById('year')
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear()
     }
 
     // === CART ===
@@ -336,3 +319,32 @@ document.addEventListener('DOMContentLoaded', () => {
     cartCloseBtn.addEventListener('click', closeCart)
     cartOverlay.addEventListener('click', closeCart)
 })
+
+// === FOOTER YEAR ===
+const yearSpan = document.getElementById('year')
+if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear()
+}
+
+// === FOOTER-BÅGE + TEXT REVEAL ===
+const footerArc = document.querySelector('.site-footer.reveal-arc')
+
+if ('IntersectionObserver' in window && footerArc) {
+    const footerObserver = new IntersectionObserver(
+        (entries, obs) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    footerArc.classList.add('reveal-arc--visible')
+                    obs.unobserve(footerArc)
+                }
+            })
+        },
+        {
+            threshold: 0.2
+        }
+    )
+
+    footerObserver.observe(footerArc)
+} else if (footerArc) {
+    footerArc.classList.add('reveal-arc--visible')
+}

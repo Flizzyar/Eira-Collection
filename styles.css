@@ -202,7 +202,6 @@ img {
     display: block;
 }
 
-/* Mobilmeny */
 .nav-links {
     position: fixed;
     top: 56px;
@@ -243,6 +242,7 @@ img {
 
 .page-content {
     min-height: 100vh;
+    background-color: #ffffff;
 }
 
 /* ========================= HERO ========================= */
@@ -250,14 +250,18 @@ img {
 .hero {
     position: relative;
     overflow: hidden;
+    height: 80vh;
 }
 
 .hero-image-wrapper {
     position: relative;
+    height: 100%;
 }
 
 .hero-image {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     transform-origin: center;
     animation: hero-breathe 14s ease-in-out infinite;
 }
@@ -373,25 +377,42 @@ img {
 
 /* ========================= NEDÅTPIL (SCROLL-HINT) ========================= */
 
+.hero-wrapper {
+    position: relative;
+    background-color: #ffffff;
+    padding-bottom: 8px;
+}
+
 .scroll-hint {
-    position: fixed;
-    left: 50%;
-    bottom: 1.5rem;
-    transform: translateX(-50%);
-    border: none;
-    background: transparent;
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.1rem;
+    width: 100%;
+    padding: 0.9rem 0.8rem;
+    border: none;
+    background: #ffffff;
+    cursor: pointer;
     font-size: 0.65rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--brand-color);
-    z-index: 30;
-    animation: scrollHintBounce 1.4s ease-in-out infinite;
-    padding: 0.3rem 0.8rem;
+    animation: scrollHintBounceMobile 1.4s ease-in-out infinite;
+    overflow: hidden;
+    max-height: 80px;
+    transition:
+        opacity 0.3s ease,
+        max-height 0.4s ease 0.2s,
+        padding 0.3s ease 0.2s;
+}
+
+.scroll-hint--hidden {
+    opacity: 0;
+    pointer-events: none;
+    animation: none;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .scroll-hint__label {
@@ -403,23 +424,15 @@ img {
     line-height: 1;
 }
 
-.scroll-hint--hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%, 10px);
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+
+@keyframes scrollHintBounceMobile {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
 }
 
-@keyframes scrollHintBounce {
-    0%,
-    100% {
-        transform: translateX(-50%) translateY(0);
-    }
-    50% {
-        transform: translateX(-50%) translateY(5px);
-    }
+@keyframes scrollHintBounceDesktop {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(6px); }
 }
 
 /* ========================= KATEGORI-KNAPPAR ========================= */
@@ -430,6 +443,16 @@ img {
     padding: 2rem 1.2rem;
     gap: 0.6rem;
     background-color: #ffffff;
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+        opacity 0.55s ease-out,
+        transform 0.55s ease-out;
+}
+
+.category-buttons--visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .category-button {
@@ -650,8 +673,8 @@ img {
     white-space: nowrap;
     display: flex;
     width: max-content;
-    animation: scrollText 35s linear infinite;
-    font-size: 0 5rem;
+    animation: scrollText 70s linear infinite;
+    font-size: 0.5rem;
 }
 
 .scroll-banner span {
@@ -806,8 +829,8 @@ img {
     transform: translate(-50%, 60%);
     opacity: 0;
     transition:
-        transform 1s ease-out,
-        opacity 0.8s ease-out;
+        transform 0.5s ease-out,
+        opacity 0.4s ease-out;
 }
 
 .site-footer.reveal-arc--visible::before {
@@ -825,9 +848,9 @@ img {
     transform: translateY(20px);
     filter: blur(4px);
     transition:
-        opacity 0.6s ease-out,
-        transform 0.6s ease-out,
-        filter 0.6s ease-out;
+        opacity 0.3s ease-out,
+        transform 0.3s ease-out,
+        filter 0.3s ease-out;
     will-change: opacity, transform, filter;
 }
 
@@ -838,16 +861,16 @@ img {
 }
 
 .site-footer .footer-top {
-    transition-delay: 0.05s;
+    transition-delay: 0.02s;
 }
 .site-footer .footer-divider {
-    transition-delay: 0.12s;
+    transition-delay: 0.06s;
 }
 .site-footer .footer-links-row {
-    transition-delay: 0.18s;
+    transition-delay: 0.09s;
 }
 .site-footer .footer-social {
-    transition-delay: 0.24s;
+    transition-delay: 0.12s;
 }
 
 .footer-top {
@@ -865,8 +888,8 @@ img {
     margin-bottom: 0.3rem;
     transform: translateY(4px);
     transition:
-        letter-spacing 0.6s ease-out,
-        transform 0.6s ease-out;
+        letter-spacing 0.3s ease-out,
+        transform 0.3s ease-out;
 }
 
 .site-footer.reveal-arc--visible .footer-logo {
@@ -1211,11 +1234,11 @@ img {
 
     /* --- Hero --- */
     .hero {
-        max-height: 90vh;
+        height: 80vh;
     }
 
     .hero-image-wrapper {
-        height: 90vh;
+        height: 80vh;
     }
 
     .hero-image {
@@ -1240,6 +1263,20 @@ img {
     .hero-cta {
         font-size: 0.85rem;
         padding: 0.85rem 2.2rem;
+    }
+
+    /* --- Scroll hint (over hero on desktop) --- */
+    .scroll-hint {
+        position: absolute;
+        bottom: 1.8rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        padding: 0.3rem 0.8rem;
+        background: transparent;
+        color: var(--preview-bg);
+        z-index: 3;
+        animation: scrollHintBounceDesktop 1.4s ease-in-out infinite;
     }
 
     /* --- Category buttons --- */
