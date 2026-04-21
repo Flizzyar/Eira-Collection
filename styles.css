@@ -1,13 +1,4 @@
 /* ========================= FONTER ========================= */
-@font-face {
-    font-family: 'Safira March';
-    src:
-        url('fonts/SafiraMarch.woff2') format('woff2'),
-        url('fonts/SafiraMarch.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
 
 /* ========================= UTILITIES ========================= */
 .sr-only {
@@ -32,7 +23,7 @@
     --font-sans:
         'Josefin Sans', system-ui, -apple-system, BlinkMacSystemFont,
         'Segoe UI', sans-serif;
-    --font-serif: 'Safira March', 'Times New Roman', serif;
+    --font-serif: 'Times New Roman', serif;
 }
 
 /* ========================= RESET / BAS ========================= */
