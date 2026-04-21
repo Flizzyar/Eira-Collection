@@ -8,7 +8,8 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Pacifico&display=swap" />
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Pacifico&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Pacifico&display=swap" /></noscript>
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
@@ -132,10 +133,10 @@
 
             <!-- KATEGORI-KNAPPAR -->
             <section class="category-buttons">
-                <button class="category-button">Örhängen</button>
-                <button class="category-button">Halsband</button>
-                <button class="category-button">Ringar</button>
-                <button class="category-button">Armband</button>
+                <button class="category-button" type="button">Örhängen</button>
+                <button class="category-button" type="button">Halsband</button>
+                <button class="category-button" type="button">Ringar</button>
+                <button class="category-button" type="button">Armband</button>
             </section>
 
             <!-- MEST KÖPTA / PRODUKTER -->
@@ -317,7 +318,7 @@
                     </span>
                 </p>
 
-                <h1 class="preview-title">THE LOOK</h1>
+                <p class="preview-title">THE LOOK</p>
 
                 <picture>
                     <source media="(min-width: 900px)" srcset="./photos/preview.jpg" />
@@ -356,7 +357,9 @@
                     </p>
 
                     <form class="newsletter-form">
+                        <label for="newsletter-email" class="sr-only">Din emailadress</label>
                         <input
+                            id="newsletter-email"
                             class="newsletter-input"
                             type="email"
                             placeholder="DIN EMAILADRESS*"
@@ -364,7 +367,9 @@
                             autocomplete="email"
                         />
 
+                        <label for="newsletter-birthday" class="sr-only">Födelsedag</label>
                         <input
+                            id="newsletter-birthday"
                             class="newsletter-input"
                             type="text"
                             placeholder="FÖDELSEDAG YYYY/MM/DD"
