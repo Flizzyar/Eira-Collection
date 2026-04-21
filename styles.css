@@ -1,7 +1,4 @@
 /* ========================= FONTER ========================= */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
 @font-face {
     font-family: 'Safira March';
     src:
@@ -9,6 +6,7 @@
         url('fonts/SafiraMarch.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 /* ========================= VARIABLER ========================= */
@@ -649,7 +647,7 @@ img {
 }
 
 .preview-image {
-    width: 79%;
+    width: 90%;
     margin: 1rem;
 }
 
@@ -946,21 +944,19 @@ img {
 }
 
 .footer-social a {
-    width: 34px;
-    height: 34px;
+    width: 38px;
+    height: 38px;
     border-radius: 999px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(221, 212, 204, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .footer-social svg {
-    width: 16px;
-    height: 16px;
-    fill: var(--preview-bg);
-    stroke: var(--preview-bg);
-    stroke-width: 1.3;
+    width: 18px;
+    height: 18px;
+    color: var(--preview-bg);
 }
 
 /* ========================= PRODUCT ADD BUTTON ========================= */
@@ -1324,9 +1320,9 @@ img {
     }
 
     .preview-image {
-        width: 25%;
-        max-width: 650px;
-        margin: 0;
+        width: 80%;
+        max-width: 900px;
+        margin: 0 0 0 auto;
     }
 
     .scroll-banner {
