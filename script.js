@@ -1,7 +1,7 @@
 // === SITE LOADER ===
 const siteLoader = document.getElementById('site-loader')
 if (siteLoader) {
-    const minWait = new Promise((r) => setTimeout(r, 2300))
+    const minWait = new Promise((r) => setTimeout(r, 800))
     const loaded = new Promise((r) => {
         if (document.readyState === 'complete') r()
         else window.addEventListener('load', r, { once: true })
